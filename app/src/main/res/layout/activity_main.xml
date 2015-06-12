@@ -18,5 +18,20 @@
         android:text="Listagem"
         android:id="@+id/button2"/>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Preferencias"
+        android:id="@+id/button3"
+        android:onClick="teste"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Provider"
+        android:id="@+id/button4"
+        android:onClick="provider"/>
+
+
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package dpassos.com.br.persistencia;
 import android.content.SyncStatusObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +27,8 @@ public class ListaDadosActivity extends ActionBarActivity {
         super.onStart();
         db = dbHelper.getReadableDatabase();
         //exibirDadosRawQuery();
-        exebirDadosQuery();
+        //exebirDadosQuery();
+        exibirDadosQueryBuilder();
     }
 
     @Override
@@ -52,11 +54,18 @@ public class ListaDadosActivity extends ActionBarActivity {
         cursor.close();
     }
 
+    //http://stackoverflow.com/questions/10600670/sqlitedatabase-query-method
     private void exebirDadosQuery(){
         Cursor cursor = db.query("pessoa", new String[]{"nome","rg","idade"}, null, null, null, null, null);
         exibirDados(cursor);
     }
 
+    private void exibirDadosQueryBuilder(){
+        SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+        builder.setTables("pessoa");
+        Cursor cursor = builder.query(db, new String[]{"nome","rg","idade"}, null, null, null, null, null);
+        exibirDados(cursor);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

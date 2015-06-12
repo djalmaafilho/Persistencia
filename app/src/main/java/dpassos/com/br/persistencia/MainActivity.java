@@ -34,6 +34,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         });
     }
 
+    public void teste(View v){
+        Intent it  =  new Intent(MainActivity.this, PrefereciasActivity.class);
+        startActivity(it);
+    }
+
+    public void provider(View v){
+        Intent it  =  new Intent(MainActivity.this, ProviderClienteActivity.class);
+        startActivity(it);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

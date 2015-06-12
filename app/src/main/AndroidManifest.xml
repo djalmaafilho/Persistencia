@@ -20,6 +20,22 @@
             android:name=".ListaDadosActivity"
             android:label="@string/title_activity_lista_dados" >
         </activity>
+        <activity
+            android:name=".PrefereciasActivity"
+            android:label="@string/title_activity_preferecias" >
+        </activity>
+
+        <provider
+            android:name=".PersistenciaProvider"
+            android:authorities="dpassos.com.br.persistencia"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
+
+        <activity
+            android:name=".ProviderClienteActivity"
+            android:label="@string/title_activity_provider_cliente" >
+        </activity>
     </application>
 
 </manifest>

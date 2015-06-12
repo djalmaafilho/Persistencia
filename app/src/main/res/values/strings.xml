@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_lista_dados">ListaDadosActivity</string>
+    <string name="title_activity_preferecias">PrefereciasActivity</string>
+    <string name="title_activity_provider_cliente">ProviderClienteActivity</string>
 </resources>
