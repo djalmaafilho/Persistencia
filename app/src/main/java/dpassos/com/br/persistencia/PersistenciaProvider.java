@@ -31,6 +31,7 @@ public class PersistenciaProvider extends ContentProvider {
     public String getType(Uri uri) {
         int codigo = matcher.match(uri);
         if(codigo == 1){
+            //vnd.android.cursor.item
             return "vnd.android.cursor.dir/vnd.dpassos.com.br.persistencia.pessoa";
         }else{
             throw  new IllegalArgumentException("Uri não suportada");
@@ -56,7 +57,8 @@ public class PersistenciaProvider extends ContentProvider {
         int codigo = matcher.match(uri);
 
         if(codigo == 1){
-            return db.query("pessoa", projection, selection, selectionArgs, null, null, sortOrder);
+            return db.query("pessoa", projection,
+                    selection, selectionArgs, null, null, sortOrder);
         }else{
             throw  new IllegalArgumentException("Uri não suportada");
         }

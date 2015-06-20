@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 
 public class ListaDadosActivity extends ActionBarActivity {
@@ -39,31 +40,37 @@ public class ListaDadosActivity extends ActionBarActivity {
 
     private void exibirDadosRawQuery(){
         Cursor cursor =
-        db.rawQuery("SELECT nome, rg, idade FROM pessoa",null);
+        db.rawQuery("SELECT _id, nome, rg, idade FROM pessoa",null);
         exibirDados(cursor);
     }
 
     private void exibirDados(Cursor cursor){
-        cursor.moveToFirst();
-        for(int i = 0; i < cursor.getCount() ; i++){
-            System.out.println("Nome: "+cursor.getString(0)+
-            " Rg: "+cursor.getString(1)+" Idade: "+cursor.getInt(2));
-            cursor.moveToNext();
-        }
 
-        cursor.close();
+        MeuCursorAdapter cursorAdapter = new MeuCursorAdapter(this, cursor, false);
+
+        ListView lv = (ListView)findViewById(R.id.listView);
+        lv.setAdapter(cursorAdapter);
+
+//        cursor.moveToFirst();
+//        for(int i = 0; i < cursor.getCount() ; i++){
+//            System.out.println("Nome: "+cursor.getString(0)+
+//            " Rg: "+cursor.getString(1)+" Idade: "+cursor.getInt(2));
+//            cursor.moveToNext();
+//        }
+//
+//        cursor.close();
     }
 
     //http://stackoverflow.com/questions/10600670/sqlitedatabase-query-method
     private void exebirDadosQuery(){
-        Cursor cursor = db.query("pessoa", new String[]{"nome","rg","idade"}, null, null, null, null, null);
+        Cursor cursor = db.query("pessoa", new String[]{"_id","nome","rg","idade"}, null, null, null, null, null);
         exibirDados(cursor);
     }
 
     private void exibirDadosQueryBuilder(){
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables("pessoa");
-        Cursor cursor = builder.query(db, new String[]{"nome","rg","idade"}, null, null, null, null, null);
+        Cursor cursor = builder.query(db, new String[]{"_id", "nome","rg","idade"}, null, null, null, null, null);
         exibirDados(cursor);
     }
 
